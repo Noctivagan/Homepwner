@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BNRDetailViewController">
             <connections>
+                <outlet property="cameraButton" destination="sos-OX-Vle" id="W5r-hS-YFG"/>
                 <outlet property="dateLabel" destination="dxo-F5-Rv4" id="MpW-hZ-667"/>
                 <outlet property="nameField" destination="iSX-SN-S5Q" id="gr2-Ez-zTJ"/>
                 <outlet property="serialNumberField" destination="AhR-8q-Hvb" id="nev-u4-Eo0"/>
@@ -99,9 +100,9 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="bg3-Ry-Dg1" firstAttribute="baseline" secondItem="xa0-uL-Xg6" secondAttribute="baseline" constant="1" id="2Hc-QE-opQ"/>
                 <constraint firstItem="dxo-F5-Rv4" firstAttribute="top" secondItem="xa0-uL-Xg6" secondAttribute="bottom" constant="16" id="6Vq-pZ-HkG"/>
                 <constraint firstItem="0X2-KU-6Eg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="6jp-TT-p7Y"/>
+                <constraint firstItem="bg3-Ry-Dg1" firstAttribute="centerY" secondItem="xa0-uL-Xg6" secondAttribute="centerY" constant="-0.5" id="8km-n9-YDb"/>
                 <constraint firstItem="S30-cg-bC4" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="77" id="AnG-hY-gVC"/>
                 <constraint firstItem="b9i-lG-eYq" firstAttribute="top" secondItem="S30-cg-bC4" secondAttribute="bottom" constant="19" id="Cvs-K1-2Wb"/>
                 <constraint firstItem="iSX-SN-S5Q" firstAttribute="baseline" secondItem="S30-cg-bC4" secondAttribute="baseline" id="DnK-eM-ixU"/>
