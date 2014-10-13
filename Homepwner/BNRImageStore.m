@@ -53,8 +53,8 @@
     // Create full path for image
     NSString *imagePath = [self imagePathForKey:key];
     
-    // Turn image into JPEG data
-    NSData *data = UIImageJPEGRepresentation(image, 0.5);
+    // Turn image into PNG data
+    NSData *data = UIImagePNGRepresentation(image);
     
     // Write it to full path
     [data writeToFile:imagePath atomically:YES];

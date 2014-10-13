@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		766F34A419EBFCB000D9C619 /* BNRItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 766F34A319EBFCB000D9C619 /* BNRItemCell.m */; };
+		766F34A619EBFCFC00D9C619 /* BNRItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 766F34A519EBFCFC00D9C619 /* BNRItemCell.xib */; };
+		766F34A919EC134800D9C619 /* BNRImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 766F34A819EC134800D9C619 /* BNRImageViewController.m */; };
 		E209893A19D0A50400371417 /* BNRImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = E209893919D0A50400371417 /* BNRImageStore.m */; };
 		E20AF95419D0532700CDD11D /* BNRDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E20AF95219D0532700CDD11D /* BNRDetailViewController.m */; };
 		E20AF95519D0532700CDD11D /* BNRDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E20AF95319D0532700CDD11D /* BNRDetailViewController.xib */; };
@@ -31,6 +34,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		766F34A219EBFCB000D9C619 /* BNRItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRItemCell.h; sourceTree = "<group>"; };
+		766F34A319EBFCB000D9C619 /* BNRItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRItemCell.m; sourceTree = "<group>"; };
+		766F34A519EBFCFC00D9C619 /* BNRItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BNRItemCell.xib; sourceTree = "<group>"; };
+		766F34A719EC134800D9C619 /* BNRImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRImageViewController.h; sourceTree = "<group>"; };
+		766F34A819EC134800D9C619 /* BNRImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRImageViewController.m; sourceTree = "<group>"; };
 		E209893819D0A50400371417 /* BNRImageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRImageStore.h; sourceTree = "<group>"; };
 		E209893919D0A50400371417 /* BNRImageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRImageStore.m; sourceTree = "<group>"; };
 		E20AF95119D0532700CDD11D /* BNRDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRDetailViewController.h; sourceTree = "<group>"; };
@@ -100,6 +108,8 @@
 				E20AF95319D0532700CDD11D /* BNRDetailViewController.xib */,
 				E2912BED19CF342A00799FD9 /* BNRItemsViewController.h */,
 				E2912BEE19CF342A00799FD9 /* BNRItemsViewController.m */,
+				766F34A719EC134800D9C619 /* BNRImageViewController.h */,
+				766F34A819EC134800D9C619 /* BNRImageViewController.m */,
 				E2912BF019CF359200799FD9 /* BNRItem.h */,
 				E2912BF119CF359200799FD9 /* BNRItem.m */,
 				E2EA6BC019D0A125009E62F1 /* BNRItemStore.h */,
@@ -109,6 +119,9 @@
 				E2912BCD19CF33C600799FD9 /* Supporting Files */,
 				E209893819D0A50400371417 /* BNRImageStore.h */,
 				E209893919D0A50400371417 /* BNRImageStore.m */,
+				766F34A219EBFCB000D9C619 /* BNRItemCell.h */,
+				766F34A519EBFCFC00D9C619 /* BNRItemCell.xib */,
+				766F34A319EBFCB000D9C619 /* BNRItemCell.m */,
 			);
 			path = Homepwner;
 			sourceTree = "<group>";
@@ -221,6 +234,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E20AF95519D0532700CDD11D /* BNRDetailViewController.xib in Resources */,
+				766F34A619EBFCFC00D9C619 /* BNRItemCell.xib in Resources */,
 				E2912BD819CF33C600799FD9 /* LaunchScreen.xib in Resources */,
 				E2912BD519CF33C600799FD9 /* Images.xcassets in Resources */,
 			);
@@ -241,6 +255,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E20AF95419D0532700CDD11D /* BNRDetailViewController.m in Sources */,
+				766F34A419EBFCB000D9C619 /* BNRItemCell.m in Sources */,
+				766F34A919EC134800D9C619 /* BNRImageViewController.m in Sources */,
 				E2912BF519CF368B00799FD9 /* BNRItemStore.m in Sources */,
 				E209893A19D0A50400371417 /* BNRImageStore.m in Sources */,
 				E2912BEF19CF342A00799FD9 /* BNRItemsViewController.m in Sources */,
