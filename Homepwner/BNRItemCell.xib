@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -13,11 +13,8 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ap2-vY-O6o" id="dc0-2u-IJN">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zHb-Ro-7Ot">
-                        <rect key="frame" x="48" y="1" width="45" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="Z0k-aI-g87"/>
-                        </constraints>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zHb-Ro-7Ot">
+                        <rect key="frame" x="48" y="1" width="198" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
@@ -31,7 +28,7 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KJg-1Q-4WI">
                         <rect key="frame" x="0.0" y="2" width="40" height="40"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="40" id="1Pk-BW-M4B"/>
+                            <constraint firstAttribute="width" constant="40" placeholder="YES" id="1Pk-BW-M4B"/>
                             <constraint firstAttribute="height" constant="40" id="6ua-fB-sTb"/>
                         </constraints>
                     </imageView>
@@ -44,11 +41,8 @@
                             <action selector="showImage:" destination="ap2-vY-O6o" eventType="touchUpInside" id="jNh-Hp-Kr5"/>
                         </connections>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s4K-hG-0xN">
-                        <rect key="frame" x="48" y="23" width="45" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="Ycl-eO-dhS"/>
-                        </constraints>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s4K-hG-0xN">
+                        <rect key="frame" x="48" y="31" width="198" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -84,6 +78,7 @@
                 </variation>
             </tableViewCellContentView>
             <connections>
+                <outlet property="imageViewHeightConstraint" destination="6ua-fB-sTb" id="FN3-L4-c6d"/>
                 <outlet property="nameLabel" destination="zHb-Ro-7Ot" id="1VO-0J-J8Y"/>
                 <outlet property="serialNumberLabel" destination="s4K-hG-0xN" id="Psz-Cl-UxH"/>
                 <outlet property="thumbnailView" destination="KJg-1Q-4WI" id="ozy-Wx-Qhk"/>
