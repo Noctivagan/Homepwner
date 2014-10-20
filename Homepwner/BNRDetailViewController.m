@@ -10,6 +10,7 @@
 #import "BNRItem.h"
 #import "BNRImageStore.h"
 #import "BNRItemStore.h"
+#import "BNRAssetTypeViewController.h"
 
 @interface BNRDetailViewController ()
 
@@ -27,9 +28,17 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *serialNumberLabel;
 @property (weak, nonatomic) IBOutlet UILabel *valueLabel;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *assetTypeButton;
 @end
 
 @implementation BNRDetailViewController
+- (IBAction)showAssetTypePicker:(id)sender {
+    [self.view endEditing:YES];
+    BNRAssetTypeViewController *avc = [[BNRAssetTypeViewController alloc] init];
+    avc.item = self.item;
+    
+    [self.navigationController pushViewController:avc animated:YES];
+}
 
 -(instancetype)initForNewItem:(BOOL)isNew
 {
@@ -187,6 +196,14 @@
     
     // Use that image to put on the screen in the imageView
     self.imageView.image = imageToDisplay;
+    
+    NSString *typeLabel = [self.item.assetType valueForKey:@"label"];
+    if (!typeLabel) {
+        typeLabel = @"None";
+    }
+    
+    self.assetTypeButton.title = [NSString stringWithFormat:@"Type: %@", typeLabel];
+    
     [self updateFonts];
     
 }
