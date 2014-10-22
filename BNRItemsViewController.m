@@ -15,11 +15,54 @@
 #import "BNRImageViewController.h"
 
 @interface BNRItemsViewController ()
-<UIPopoverControllerDelegate>
+<UIPopoverControllerDelegate, UIDataSourceModelAssociation>
 @property (nonatomic,strong) UIPopoverController *imagePopover;
 @end
 
 @implementation BNRItemsViewController
+
+- (void)encodeRestorableStateWithCoder:(NSCoder *)coder
+{
+    [coder encodeBool:self.isEditing forKey:@"TableViewIsEditing"];
+    [super encodeRestorableStateWithCoder:coder];
+}
+
+- (void)decodeRestorableStateWithCoder:(NSCoder *)coder
+{
+    self.editing = [coder decodeBoolForKey:@"TableViewIsEditing"];
+    [super decodeRestorableStateWithCoder:coder];
+}
+
+- (NSString *)modelIdentifierForElementAtIndexPath:(NSIndexPath *)idx inView:(UIView *)view
+{
+    NSString *identifier = nil;
+    if (idx && view) {
+        // Return an identifier of the given NSIndexPath in case next time the data source changes
+        BNRItem *item = [[BNRItemStore sharedStore]allItems][idx.row];
+        identifier = item.itemKey;
+    }
+    return identifier;
+}
+
+- (NSIndexPath *)indexPathForElementWithModelIdentifier:(NSString *)identifier inView:(UIView *)view
+{
+    NSIndexPath *indexPath = nil;
+    if (identifier && view) {
+        NSArray *items = [[BNRItemStore sharedStore]allItems];
+        for (BNRItem *item in items) {
+            if ([identifier isEqualToString:item.itemKey]) {
+                int row = [items indexOfObjectIdenticalTo:item];
+                indexPath = [NSIndexPath indexPathForRow:row inSection:0];
+                break;
+            }
+        }
+    }
+    return indexPath;
+}
++ (UIViewController *)viewControllerWithRestorationIdentifierPath:(NSArray *)identifierComponents coder:(NSCoder *)coder
+{
+    return [[self alloc]init];
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -41,6 +84,9 @@
     detailViewController.dismissBlock = ^{[self.tableView reloadData];};
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
+    
+    navController.restorationIdentifier = NSStringFromClass([navController class]);
+    
     navController.modalPresentationStyle = UIModalPresentationFormSheet;
 //    navController.modalTransitionStyle = UIModalTransitionStylePartialCurl;
     [self presentViewController:navController animated:YES completion:NULL];
@@ -54,7 +100,10 @@
     self = [super initWithStyle:UITableViewStylePlain];
     if(self)
     {
-        self.navigationItem.title = @"Homepwner";
+        self.navigationItem.title = NSLocalizedString(@"Homepwner", @"Name of application");
+        
+        self.restorationIdentifier = NSStringFromClass([self class]);
+        self.restorationClass = [self class];
         
         // Create a new bar button item that will send
         // addNewItem: to BNRItemsViewController
@@ -67,6 +116,9 @@
         
         NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
         [nc addObserver:self selector:@selector(updateTableViewForDynamicTypeSize) name:UIContentSizeCategoryDidChangeNotification object:nil];
+        
+        // Register for locale change notification
+        [nc addObserver:self selector:@selector(localeChanged:) name:NSCurrentLocaleDidChangeNotification object:nil];
     }
     return self;
 }
@@ -74,6 +126,11 @@
 - (instancetype) initWithStyle:(UITableViewStyle)style
 {
     return [self init];
+}
+
+- (void)localeChanged:(NSNotificationCenter *)note
+{
+    [self.tableView reloadData];
 }
 
 - (void)viewDidLoad
@@ -84,6 +141,8 @@
     
     // Register the NIB which contains the cell
     [self.tableView registerNib:nib forCellReuseIdentifier:@"BNRItemCell"];
+    
+    self.tableView.restorationIdentifier = @"BNRItemsViewControllerTableView";
         
 }
 
@@ -113,7 +172,13 @@
     // Configure the cell
     cell.nameLabel.text = item.itemName;
     cell.serialNumberLabel.text = item.serialNumber;
-    cell.valueLabel.text = [NSString stringWithFormat:@"$%d",item.valueInDollars];
+    // Create a number formatter for currency
+    static NSNumberFormatter *currencyFormatter = nil;
+    if (currencyFormatter == nil) {
+        currencyFormatter = [[NSNumberFormatter alloc]init];
+        currencyFormatter.numberStyle = NSNumberFormatterCurrencyStyle;
+    }
+    cell.valueLabel.text = [currencyFormatter stringFromNumber:@(item.valueInDollars)];
     
     // Green if more than 100, red if less than 50
     if (item.valueInDollars <= 50) {

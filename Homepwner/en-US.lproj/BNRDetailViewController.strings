@@ -1,0 +1,15 @@
+
+/* Class = "IBUILabel"; text = "Name"; ObjectID = "S30-cg-bC4"; */
+"S30-cg-bC4.text" = "Name";
+
+/* Class = "IBUIBarButtonItem"; title = "Item"; ObjectID = "aJo-hM-rH3"; */
+"aJo-hM-rH3.title" = "Item";
+
+/* Class = "IBUILabel"; text = "Serial"; ObjectID = "b9i-lG-eYq"; */
+"b9i-lG-eYq.text" = "Serial";
+
+/* Class = "IBUILabel"; text = "Value"; ObjectID = "bg3-Ry-Dg1"; */
+"bg3-Ry-Dg1.text" = "Value";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "dxo-F5-Rv4"; */
+"dxo-F5-Rv4.text" = "Label";
