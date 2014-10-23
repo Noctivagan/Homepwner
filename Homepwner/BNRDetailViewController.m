@@ -302,10 +302,12 @@
 
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
 
+
     // If the device ahs a camera, take a picture, otherwise,
     // just pick from the photo library
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        imagePicker.allowsEditing = YES;
     } else {
         imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     }
@@ -358,7 +360,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     }
 
     // Get picked image from info dictionary
-    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    UIImage *image = info[UIImagePickerControllerEditedImage];
 
     [self.item setThumbnailFromImage:image];
 
