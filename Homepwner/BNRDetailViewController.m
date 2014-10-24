@@ -134,7 +134,7 @@
 
     // Do not produce a translated constraint for this view
     iv.translatesAutoresizingMaskIntoConstraints = NO;
-
+    
     // The image view was a subview of the view
     [self.view addSubview:iv];
 
@@ -162,6 +162,7 @@
 
     [self.view addConstraints:horizontalConstraints];
     [self.view addConstraints:verticalConstraints];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -195,6 +196,7 @@
 
         // Use that image to put on the screen in imageView
         self.imageView.image = imageToDisplay;
+ 
     } else {
         // Clear the imageView
         self.imageView.image = nil;
@@ -308,6 +310,7 @@
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
         imagePicker.allowsEditing = YES;
+        
     } else {
         imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     }
@@ -335,6 +338,10 @@
 - (IBAction)backgroundTapped:(id)sender
 {
     [self.view endEditing:YES];
+    self.imageView.layer.cornerRadius = self.imageView.frame.size.height / 2;
+    self.imageView.clipsToBounds = YES;
+    NSLog(@"VIEWWILLAPPEAR: Frame size height: %f Frame size width: %f Radius: %f",self.imageView.frame.size.height, self.imageView.frame.size.width, self.imageView.layer.cornerRadius);
+
 }
 
 - (IBAction)showAssetTypePicker:(id)sender
@@ -360,7 +367,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     }
 
     // Get picked image from info dictionary
-    UIImage *image = info[UIImagePickerControllerEditedImage];
+    UIImage *image = info[UIImagePickerControllerOriginalImage];
 
     [self.item setThumbnailFromImage:image];
 
@@ -370,6 +377,12 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     // Put that image onto the screen in our image view
     self.imageView.image = image;
 
+    float foo = MIN(self.imageView.frame.size.height, self.imageView.frame.size.width);
+    
+    self.imageView.layer.cornerRadius = foo / 2.0;
+    self.imageView.clipsToBounds = YES;
+    
+    NSLog(@"Frame size height: %f Frame size width: %f Radius: %f",self.imageView.frame.size.height, self.imageView.frame.size.width, self.imageView.layer.cornerRadius);
     // Do I have a popover?
     if (self.imagePickerPopover) {
 

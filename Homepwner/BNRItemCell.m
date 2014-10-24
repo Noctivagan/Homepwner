@@ -53,6 +53,9 @@
     [nc addObserver:self selector:@selector(updateInterfaceForDynamicTypeSize) name:UIContentSizeCategoryDidChangeNotification object:nil];
     NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:self.thumbnailView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.thumbnailView attribute:NSLayoutAttributeWidth multiplier:1 constant:0];
     [self.thumbnailView addConstraint:constraint];
+    
+    self.thumbnailView.layer.cornerRadius = self.thumbnailView.frame.size.width / 2.0;
+    self.thumbnailView.clipsToBounds = YES;
 }
 
 - (void) dealloc
